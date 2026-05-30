@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfolio - MUHAMMAD AHMAD</title>
+    <meta name="description" content="Photography portfolio by Muhammad Ahmad." />
+    <link rel="icon" href="https://images.squarespace-cdn.com/content/v1/682a4aaab8755d4b448af70a/b059913c-e6a7-4ceb-b8dc-df7c5aba2570/favicon.ico?format=100w" />
+    <link rel="preconnect" href="https://images.squarespace-cdn.com" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to Content</a>
+    <header class="site-header">
+      <a class="site-title" href="index.html">MUHAMMAD AHMAD</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="menu-open">Open Menu</span>
+        <span class="menu-close">Close Menu</span>
+      </button>
+      <!-- Navigation is repeated on every page. Add a new page/category link here and in the other HTML files. -->
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <a href="index.html">Overview</a>
+        <a href="portfolio.html" aria-current="page">Portfolio</a>
+        <a href="video-creation.html">Video Creation</a>
+        <a href="tiktok.html">TikTok</a>
+        <a href="about.html">About Me</a>
+        <a href="contact.html">Contact</a>
+        <a class="icon-link" href="https://www.instagram.com/cuzimahmad_/" rel="noreferrer" target="_blank" aria-label="Instagram">Instagram</a>
+        <a class="icon-link linkedin" href="https://www.linkedin.com/in/muhammadahmad1127/" rel="noreferrer" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+      </nav>
+    </header>
+
+    <main class="projects-main" id="content">
+      <!--
+        NOTE FOR ADDING NEW PORTFOLIO THUMBNAILS:
+        1. Copy one full .reference-project-card block below.
+        2. Change href to the project/category page you want the thumbnail to open.
+        3. Replace the img src with the new thumbnail image URL.
+        4. Update the img alt text and the span title so the thumbnail is easy to identify.
+        5. If this thumbnail needs its own detail page, duplicate an existing project .html file
+           such as taiwan.html, rename it, and point href to the new file name.
+      -->
+      <section class="reference-project-grid portfolio-project-grid" aria-label="Portfolio projects">
+        <a class="reference-project-card" href="xing-fu-tang.html">
+          <img src="Xing Fu Tang-8.jpg" alt="Xing Fu Tang boba cup portfolio image" />
+          <span>Xing Fu Tang</span>
+        </a>
+        <a class="reference-project-card" href="cars.html">
+          <img src="Cars-10.jpg" alt="Cars portfolio image" />
+          <span>Cars</span>
+        </a>
+        <a class="reference-project-card" href="taiwan.html">
+          <!-- Thumbnail details: change img src/alt for the image and span text for the title. -->
+          <img src="Basking in the sunlight IG-6.jpg" alt="Taiwan portfolio image" />
+          <span>Taiwan</span>
+        </a>
+        <a class="reference-project-card" href="japan.html">
+          <!-- Japan thumbnail: change this img src to choose a different cover photo for the Japan card. -->
+          <img src="Japan Cars-5.jpg" alt="Japan portfolio image" />
+          <span>Japan</span>
+        </a>
+        <a class="reference-project-card" href="grand-canyon.html">
+          <img src="Grand Canyon.jpg" alt="Grand Canyon portfolio image" />
+          <span>Grand Canyon</span>
+        </a>
+      </section>
+    </main>
+
+    <footer><p>(c) 2026 MUHAMMAD AHMAD</p></footer>
+    <script src="script.js"></script>
+  </body>
+</html>

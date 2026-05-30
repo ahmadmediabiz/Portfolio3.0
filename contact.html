@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact - MUHAMMAD AHMAD</title>
+    <meta name="description" content="Contact Muhammad Ahmad for photography, video creation, content creation, and digital marketing work." />
+    <link rel="icon" href="https://images.squarespace-cdn.com/content/v1/682a4aaab8755d4b448af70a/b059913c-e6a7-4ceb-b8dc-df7c5aba2570/favicon.ico?format=100w" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to Content</a>
+    <header class="site-header">
+      <a class="site-title" href="index.html">MUHAMMAD AHMAD</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="menu-open">Open Menu</span>
+        <span class="menu-close">Close Menu</span>
+      </button>
+      <!-- Navigation is repeated on every page. Add a new page/category link here and in the other HTML files. -->
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <a href="index.html">Overview</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="video-creation.html">Video Creation</a>
+        <a href="tiktok.html">TikTok</a>
+        <a href="about.html">About Me</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+        <a class="icon-link" href="https://www.instagram.com/cuzimahmad_/" rel="noreferrer" target="_blank" aria-label="Instagram">Instagram</a>
+        <a class="icon-link linkedin" href="https://www.linkedin.com/in/muhammadahmad1127/" rel="noreferrer" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+      </nav>
+    </header>
+
+    <main class="contact-main" id="content">
+      <section class="contact-grid">
+        <div class="contact-card">
+          <!-- Contact links. Update email/social URLs here and in the form action below. -->
+          <h2>Let's Collaborate!</h2>
+          <div class="contact-links">
+            <!-- Email address: update both the mailto: value and the visible email text. -->
+            <a class="contact-email" href="mailto:ahmadmediabiz@gmail.com">ahmadmediabiz@gmail.com</a>
+            <!-- Social icon links: update href values here; icon images are controlled in styles.css under .icon-link. -->
+            <div class="contact-social-links" aria-label="Social links">
+              <a class="icon-link contact-social-icon" href="https://www.instagram.com/cuzimahmad_/" target="_blank" rel="noreferrer" aria-label="Instagram">Instagram</a>
+              <a class="icon-link linkedin contact-social-icon" href="https://www.linkedin.com/in/muhammadahmad1127/" target="_blank" rel="noreferrer" aria-label="LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- This simple form opens the visitor's email app. Change action if you use a real form service later. -->
+        <form class="contact-form" action="mailto:ahmadmediabiz@gmail.com" method="post" enctype="text/plain">
+          <label>
+            Name
+            <input name="name" autocomplete="name" />
+          </label>
+          <label>
+            Email
+            <input name="email" type="email" autocomplete="email" />
+          </label>
+          <label>
+            Message
+            <textarea name="message"></textarea>
+          </label>
+          <button type="submit">Send</button>
+        </form>
+      </section>
+    </main>
+
+    <footer><p>(c) 2026 MUHAMMAD AHMAD</p></footer>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1177 @@
+/* Font import. Change this URL and the body font-family if you want a different font. */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+/*
+  SITE COLOR GUIDE
+  Change the variables below to update the whole site's palette.
+  --bg: main page background.
+  --ink: primary text, nav links, footer text.
+  --muted: hover color and active nav link color.
+  --line: thin borders and dark placeholder panels.
+  --overlay: lightbox background color.
+
+  Quick edit recipe:
+  1. Pick a new background color and put it in --bg.
+  2. Pick a readable text color and put it in --ink.
+  3. Pick a softer version of the text color and put it in --muted.
+  4. Pick a subtle border color and put it in --line.
+  5. Match --overlay to --bg, but use rgba() with about 0.92-0.96 opacity.
+
+  Also search this file for "SUPPORT COLOR" when changing palettes.
+  Those few values control body-copy text and placeholder panel colors that
+  should complement the main variables.
+
+  Example light palette:
+  --bg: #f7f1e6;
+  --ink: #2a241d;
+  --muted: #7b705f;
+  --line: #dfd3bf;
+  --overlay: rgba(247, 241, 230, 0.94);
+*/
+:root {
+  /* Cream theme. Adjust these five values to recolor the whole site. */
+  --bg: #f7f1e6;
+  --ink: #2a241d;
+  --muted: #7b705f;
+  --line: #dfd3bf;
+  --overlay: rgba(247, 241, 230, 0.94);
+  /* Shared side padding for the top nav and Overview photos so they line up. */
+  --overview-side-padding: clamp(97px, 16.2vw, 297px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  letter-spacing: 0;
+  /* Page load fade-in. Increase/decrease 1400ms to change animation speed. */
+  opacity: 0;
+  animation: page-fade-in 1400ms ease forwards;
+}
+
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+img,
+iframe {
+  display: block;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  color: inherit;
+  font: inherit;
+}
+
+.skip-link {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 100;
+  transform: translateY(-160%);
+  background: var(--bg);
+  padding: 8px 10px;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.site-header {
+  /* Top navigation bar shared by every page. */
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 28px;
+  align-items: center;
+  min-height: 75px;
+  /* Top/bottom numbers control space above and below the nav. */
+  padding: 40px var(--overview-side-padding) 36px;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(14px);
+}
+
+.site-title {
+  /* Logo/name size in the top left. */
+  font-size: 22px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/*
+  HOMEPAGE IMAGE LOGO GUIDE
+  To turn the "MUHAMMAD AHMAD" homepage button into a clickable image:
+  1. Copy your logo/image into the images folder, for example images/logos/my-logo.png.
+  2. In index.html, replace:
+     <a class="site-title" href="index.html">MUHAMMAD AHMAD</a>
+     with:
+     <a class="site-title site-title-image" href="index.html" aria-label="Muhammad Ahmad home">
+       <img src="images/logos/my-logo.png" alt="" />
+     </a>
+  3. Uncomment the CSS below and adjust width/height/hover opacity.
+*/
+/*
+.site-title-image {
+  display: inline-flex;
+  align-items: center;
+  width: 180px;
+  height: 42px;
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.site-title-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.site-title-image:hover {
+  opacity: 0.72;
+  transform: translateY(-1px);
+}
+*/
+
+.site-nav {
+  /* Main navigation link sizing and spacing. */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px 20px;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 21px;
+  white-space: nowrap;
+}
+
+.site-title,
+.site-nav a,
+footer {
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.site-nav a:hover,
+.site-title:hover,
+.page-link:hover,
+.contact-links a:hover {
+  color: var(--muted);
+}
+
+.site-nav a[aria-current="page"] {
+  color: var(--muted);
+}
+
+.icon-link {
+  position: relative;
+  overflow: hidden;
+  width: 21px;
+  height: 21px;
+  white-space: nowrap;
+  text-indent: 32px;
+  /* Instagram icon image. Replace this file to change Instagram icons across nav and Contact. */
+  background-image: url("Creamy White_Charcoal Brown.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  flex: 0 0 21px;
+  transition: opacity 160ms ease;
+}
+
+.icon-link:hover {
+  opacity: 0.68;
+}
+
+.icon-link::before {
+  display: none;
+}
+
+.icon-link::after {
+  display: none;
+}
+
+.icon-link.linkedin {
+  background-image: url("Linkedin Creamy White_Charcoal Brown.png");
+}
+
+.menu-toggle {
+  display: none;
+  justify-self: end;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.menu-close,
+.menu-toggle[aria-expanded="true"] .menu-open {
+  display: none;
+}
+
+.menu-toggle[aria-expanded="true"] .menu-close {
+  display: inline;
+}
+
+main {
+  padding: 0 38px;
+}
+
+.overview-main {
+  /* Side buffer for the Overview image wall. Increase the max value for more side space. */
+  padding: 28px var(--overview-side-padding) 0;
+}
+
+.projects-main {
+  /* Portfolio / Video Creation project grid width, matching the reference project page. */
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 0 2vw;
+}
+
+.photo-detail-main {
+  /* Individual photography category pages. First value controls space below the header. */
+  padding: 32px var(--overview-side-padding) 0;
+}
+
+.contact-main {
+  /* Contact page top spacing after the visible "Contact" title was removed. */
+  padding-top: 84px;
+}
+
+.overview-heading,
+.page-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 380px);
+  gap: 40px;
+  align-items: end;
+  padding: 24px 0 36px;
+}
+
+.overview-heading h1,
+.page-hero h1 {
+  max-width: 1000px;
+  margin: 0;
+  font-size: clamp(42px, 7.5vw, 116px);
+  font-weight: 400;
+  line-height: 0.92;
+}
+
+.video-detail-main .page-hero h1 {
+  /* Smaller centered titles for T-Life, Big Apple Buzz, and East Lansing pages. */
+  max-width: 760px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  font-size: clamp(34px, 5vw, 76px);
+}
+
+.photo-page-title h1 {
+  /* Left-aligned titles for individual photography category pages. */
+  margin-right: 0;
+  margin-left: 0;
+  text-align: left;
+  font-size: clamp(34px, 5vw, 76px);
+}
+
+.overview-heading p,
+.page-hero p,
+.body-copy,
+.case-copy p,
+.contact-card p,
+.project-card p {
+  margin: 0;
+  /* SUPPORT COLOR: secondary paragraph text. Change this when --bg/--ink changes. */
+  color: #5b5145;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+  padding-bottom: 44px;
+}
+
+.overview-gallery {
+  /* Overview masonry layout. Change column-count to show more/fewer photos per row. */
+  display: block;
+  column-count: 3;
+  column-gap: 16px;
+}
+
+.gallery-item,
+.film-tile {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  /* SUPPORT COLOR: image placeholder shown before gallery images load. */
+  background: #e8decc;
+  cursor: zoom-in;
+}
+
+.gallery-item span,
+.film-tile span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.reference-project-card img {
+  transition: filter 180ms ease, opacity 180ms ease, transform 500ms ease;
+}
+
+.reference-project-card:hover img {
+  filter: brightness(0.72);
+}
+
+.overview-gallery .gallery-item {
+  aspect-ratio: auto;
+  background: transparent;
+  break-inside: avoid;
+  margin: 0 0 16px;
+  line-height: 0;
+}
+
+.overview-gallery .gallery-item img {
+  /* Overview images keep their natural proportions here. */
+  height: auto;
+  object-fit: contain;
+}
+
+.photo-detail-gallery {
+  /* Gallery layout for individual photography pages. */
+  display: block;
+  column-count: 3;
+  column-gap: 16px;
+}
+
+.photo-detail-gallery .gallery-item {
+  aspect-ratio: auto;
+  background: transparent;
+  break-inside: avoid;
+  margin: 0 0 16px;
+  line-height: 0;
+}
+
+.photo-detail-gallery .gallery-item img {
+  /* Keeps category-page photos uncropped. */
+  height: auto;
+  object-fit: contain;
+}
+
+.xing-fu-tang-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.xing-fu-tang-gallery .gallery-column {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+
+.xing-fu-tang-gallery .gallery-item {
+  margin: 0;
+}
+
+.grand-canyon-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.grand-canyon-gallery .gallery-column {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+
+.grand-canyon-gallery .gallery-item {
+  margin: 0;
+}
+
+.portrait {
+  aspect-ratio: 4 / 5;
+}
+
+.landscape {
+  aspect-ratio: 3 / 2;
+}
+
+.square {
+  aspect-ratio: 1;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 260px));
+  justify-content: start;
+  gap: 18px;
+  padding: 0 0 64px;
+}
+
+.project-card {
+  display: grid;
+  gap: 14px;
+}
+
+.project-card img {
+  aspect-ratio: 4 / 5;
+}
+
+.project-card strong,
+.case-copy h2,
+.contact-card h2 {
+  font-size: clamp(24px, 3vw, 42px);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.project-card strong,
+.project-card span {
+  display: block;
+}
+
+.project-card span,
+.case-meta,
+.section-kicker {
+  color: var(--muted);
+}
+
+.project-index {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  align-content: start;
+  min-height: calc(100vh - 170px);
+  padding: 28px 0 80px;
+}
+
+.project-index a {
+  font-size: clamp(30px, 4.4vw, 72px);
+  font-weight: 400;
+  line-height: 0.98;
+}
+
+.project-index a:hover {
+  color: var(--muted);
+}
+
+.reference-project-grid {
+  /* Thumbnail grid used by Portfolio and Video Creation. */
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  min-height: 33vh;
+  padding: 3.3vw 0;
+}
+
+.video-project-grid {
+  /* Video Creation only: this overrides the shared 2-column grid to 3 columns. */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.portfolio-project-grid {
+  /* Portfolio only: keeps the photography project thumbnails in 3 columns too. */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.reference-project-card {
+  display: grid;
+  gap: 0;
+  align-content: start;
+}
+
+.reference-project-card img {
+  /* Thumbnail shape. Change aspect-ratio to 1 / 1 for square or 4 / 5 for portrait. */
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  /* SUPPORT COLOR: project-card image placeholder. */
+  background: #e8decc;
+}
+
+.reference-project-card span {
+  /* Thumbnail title text under each project card. */
+  margin-top: 12px;
+  margin-bottom: 0.5em;
+  font-size: 26px;
+  line-height: 1.35;
+}
+
+.reference-project-card:hover span {
+  color: var(--muted);
+}
+
+.section-kicker {
+  margin: 0 0 18px;
+  font-size: 12px;
+}
+
+.case-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+  gap: 42px;
+  padding-bottom: 70px;
+}
+
+.video-detail-main .case-layout {
+  /* Layout for individual video project pages. */
+  grid-template-columns: minmax(0, 680px) minmax(280px, 420px);
+  justify-content: center;
+}
+
+.video-detail-main .case-media {
+  /* Caps the video/image width on the video project detail pages. */
+  max-width: 680px;
+}
+
+.case-media {
+  display: grid;
+  gap: 20px;
+  align-content: start;
+}
+
+.case-media img,
+.case-media iframe {
+  /* Video/image box size on project detail pages. */
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  /* SUPPORT COLOR: video/image placeholder shown while media loads. */
+  background: #e8decc;
+}
+
+.case-media .portrait-media {
+  aspect-ratio: 4 / 5;
+}
+
+.tiktok-detail-main .case-layout {
+  grid-template-columns: minmax(260px, 360px) minmax(280px, 420px);
+  justify-content: center;
+  align-items: start;
+}
+
+.tiktok-detail-main .case-media .portrait-media {
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+  object-position: center;
+  background: transparent;
+}
+
+.case-copy {
+  display: grid;
+  gap: 24px;
+  align-content: start;
+}
+
+.case-copy h2,
+.contact-card h2 {
+  margin: 0 0 10px;
+}
+
+.case-meta {
+  margin: 0;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(300px, 440px) minmax(280px, 420px);
+  justify-content: center;
+  align-items: start;
+  gap: 36px;
+  max-width: 940px;
+  margin: 0 auto;
+  padding-bottom: 80px;
+}
+
+.contact-card {
+  padding-top: 20px;
+}
+
+.contact-links {
+  display: grid;
+  gap: 14px;
+  margin-top: 24px;
+  line-height: 1;
+}
+
+.contact-email {
+  display: inline-block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  font-size: clamp(18px, 2vw, 28px);
+}
+
+.contact-social-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.contact-links .contact-social-icon {
+  width: 44px;
+  height: 44px;
+  min-height: 44px;
+  flex-basis: 44px;
+  text-indent: 60px;
+}
+
+.contact-form {
+  display: grid;
+  gap: 14px;
+}
+
+.contact-form label {
+  display: grid;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: transparent;
+  padding: 13px 12px;
+}
+
+.contact-form textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.contact-form button,
+.page-link {
+  width: fit-content;
+  border: 1px solid var(--ink);
+  background: transparent;
+  padding: 11px 14px;
+}
+
+.media-kit-main {
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 28px 4vw 80px;
+}
+
+.media-kit-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: 42px;
+  align-items: end;
+  padding: 18px 0 54px;
+}
+
+.media-kit-hero h1 {
+  margin: 0;
+  font-size: clamp(48px, 8vw, 118px);
+  font-weight: 400;
+  line-height: 0.92;
+}
+
+.media-kit-intro {
+  display: grid;
+  gap: 24px;
+  align-content: start;
+}
+
+.media-kit-intro p,
+.platform-card dd,
+.deliverables-grid p,
+.media-kit-contact h2 {
+  margin: 0;
+  /* SUPPORT COLOR: secondary Media Kit text. Change this when --bg/--ink changes. */
+  color: #5b5145;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.media-overview {
+  display: grid;
+  grid-template-columns: 0.8fr 0.65fr 1fr;
+  gap: 1px;
+  margin-bottom: 70px;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+
+.media-overview div,
+.platform-card,
+.deliverables-grid article,
+.brand-partner-logo {
+  background: var(--bg);
+}
+
+.media-overview div {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+  min-height: 150px;
+  padding: 24px;
+}
+
+.media-overview span,
+.platform-card span,
+.platform-card dt {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.media-overview strong {
+  font-size: clamp(22px, 2.2vw, 34px);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.media-kit-section {
+  padding: 0 0 76px;
+}
+
+.media-section-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 0.45fr) minmax(0, 1fr);
+  gap: 30px;
+  align-items: end;
+  margin-bottom: 26px;
+}
+
+.media-section-heading h2,
+.media-kit-contact h2 {
+  margin: 0;
+  font-size: clamp(30px, 4.6vw, 74px);
+  font-weight: 400;
+  line-height: 0.98;
+}
+
+.platform-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.platform-card {
+  display: grid;
+  gap: 24px;
+  align-content: start;
+  min-height: 430px;
+  border: 1px solid var(--line);
+  padding: 26px;
+}
+
+.platform-card strong {
+  font-size: clamp(28px, 4vw, 58px);
+  font-weight: 400;
+  line-height: 0.98;
+}
+
+.platform-card dl {
+  display: grid;
+  gap: 22px;
+  margin: 0;
+}
+
+.platform-card dt {
+  margin-bottom: 5px;
+}
+
+.platform-card dd {
+  font-size: 15px;
+}
+
+.split-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.45fr) minmax(0, 1fr);
+  gap: 30px;
+}
+
+.split-section .media-section-heading {
+  display: block;
+  margin-bottom: 0;
+}
+
+.deliverables-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.deliverables-grid article {
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+}
+
+.deliverables-grid h3 {
+  margin: 0 0 12px;
+  font-size: clamp(22px, 2.2vw, 34px);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.brand-partner-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+
+.brand-partner-logo {
+  display: grid;
+  min-height: 110px;
+  place-items: center;
+  padding: 18px;
+}
+
+.brand-partner-logo img {
+  width: min(100%, 180px);
+  height: 70px;
+  object-fit: contain;
+}
+
+.media-kit-contact {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 34px;
+  align-items: end;
+  border-top: 1px solid var(--line);
+  padding-top: 34px;
+}
+
+.about-image {
+  aspect-ratio: 4 / 5;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 28px 38px;
+  background: var(--overlay);
+  color: var(--ink);
+}
+
+.lightbox[hidden] {
+  display: none;
+}
+
+.lightbox img {
+  width: 100%;
+  max-height: calc(100vh - 56px);
+  object-fit: contain;
+}
+
+.lightbox-caption {
+  display: none;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+footer {
+  padding: 0 38px 32px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+footer p {
+  margin: 0;
+}
+
+@media (max-width: 1100px) {
+  /* Tablet header behavior. */
+  .site-header {
+    grid-template-columns: 1fr auto;
+  }
+
+  .site-nav {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 900px) {
+  /* Tablet page layouts. */
+  .site-header,
+  main,
+  footer {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .overview-heading,
+  .page-hero,
+  .media-kit-hero,
+  .media-overview,
+  .media-section-heading,
+  .split-section,
+  .media-kit-contact,
+  .case-layout,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .platform-grid,
+  .brand-partner-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .platform-card {
+    min-height: 0;
+  }
+
+  .video-detail-main .case-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .tiktok-detail-main .case-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .tiktok-detail-main .case-media .portrait-media {
+    height: auto;
+    aspect-ratio: 4 / 5;
+  }
+
+  .video-detail-main .case-media {
+    max-width: none;
+  }
+
+  .gallery,
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .reference-project-grid {
+    gap: 20px;
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(160px, 240px));
+  }
+
+  .overview-gallery {
+    column-count: 3;
+    column-gap: 13px;
+  }
+
+  .photo-detail-gallery {
+    column-count: 2;
+    column-gap: 13px;
+  }
+
+  .xing-fu-tang-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 13px;
+  }
+
+  .grand-canyon-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 13px;
+  }
+
+  .xing-fu-tang-gallery .gallery-column {
+    gap: 13px;
+  }
+
+  .grand-canyon-gallery .gallery-column {
+    gap: 13px;
+  }
+
+  .overview-gallery .gallery-item {
+    margin-bottom: 13px;
+  }
+
+  .photo-detail-gallery .gallery-item {
+    margin-bottom: 13px;
+  }
+
+  .lightbox {
+    padding: 52px 24px 24px;
+  }
+}
+
+@media (max-width: 680px) {
+  /* Phone layouts and mobile menu behavior. */
+  body {
+    font-size: 15px;
+  }
+
+  .site-header {
+    padding-top: 18px;
+    padding-bottom: 16px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .site-nav {
+    display: none;
+  }
+
+  .site-nav.is-open {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 8px;
+  }
+
+  .icon-link {
+    width: 21px;
+    text-indent: 32px;
+  }
+
+  .icon-link::before,
+  .icon-link::after {
+    display: none;
+  }
+
+  .site-header,
+  main,
+  footer {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .overview-heading,
+  .page-hero {
+    padding-top: 18px;
+  }
+
+  .gallery,
+  .project-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .reference-project-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .media-kit-main {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .media-kit-hero {
+    padding-top: 18px;
+  }
+
+  .deliverables-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .video-project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-main {
+    padding-right: 6vw;
+    padding-left: 6vw;
+  }
+
+  .project-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .overview-gallery {
+    column-count: 1;
+  }
+
+  .photo-detail-gallery {
+    column-count: 1;
+  }
+
+  .xing-fu-tang-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .grand-canyon-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .overview-gallery .gallery-item {
+    margin-bottom: 14px;
+  }
+
+  .photo-detail-gallery .gallery-item {
+    margin-bottom: 14px;
+  }
+
+  .overview-heading h1,
+  .page-hero h1 {
+    font-size: clamp(38px, 15vw, 66px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Accessibility: disables the fade-in for users who prefer reduced motion. */
+  body {
+    opacity: 1;
+    animation: none;
+  }
+}
